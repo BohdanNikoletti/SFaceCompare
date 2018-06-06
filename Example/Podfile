@@ -1,8 +1,10 @@
+platform :ios, '11.3'
+
 use_frameworks!
 
 target 'SFaceCompare_Example' do
   pod 'SFaceCompare', :path => '../'
-
+  pod 'OpenCV'
   target 'SFaceCompare_Tests' do
     inherit! :search_paths
 
