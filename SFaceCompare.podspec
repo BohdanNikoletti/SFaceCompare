@@ -34,12 +34,17 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = '11.3'
 
   s.source_files = 'SFaceCompare/Classes/**/*'
-  
-  # s.resource_bundles = {
-  #   'SFaceCompare' => ['SFaceCompare/Assets/*.png']
-  # }
+  s.vendored_frameworks = 'SFaceCompare/SameFace.framework'
+#  s.preserve_path = 'SFaceCompare/Classes/OpenFace.mlmodel'
+
+#  s.preserve_path = 'OpenFace.mlmodel'
+#   s.resource_bundles = {
+#     'SFaceCompare' => ['SFaceCompare/Assets/*.mlmodel']
+#   }
+#   s.xcconfig = { 'COREML_CODEGEN_LANGUAGE' => 'Swift',
+#     'SWIFT_VERSION' => '4.0'
+#   }
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
-  s.dependency 'OpenCV'
 end

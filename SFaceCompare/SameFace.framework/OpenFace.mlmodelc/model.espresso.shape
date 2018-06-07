@@ -1,0 +1,592 @@
+{
+  "layer_shapes" : {
+    "zero_padding2d_116_output" : {
+      "k" : 96,
+      "w" : 5,
+      "n" : 1,
+      "h" : 5
+    },
+    "sqrt_5a_output" : {
+      "k" : 1024,
+      "w" : 1,
+      "n" : 1,
+      "h" : 1
+    },
+    "activation_158_output" : {
+      "k" : 32,
+      "w" : 12,
+      "n" : 1,
+      "h" : 12
+    },
+    "max_pooling2d_31_output" : {
+      "k" : 736,
+      "w" : 1,
+      "n" : 1,
+      "h" : 1
+    },
+    "activation_163_output" : {
+      "k" : 32,
+      "w" : 12,
+      "n" : 1,
+      "h" : 12
+    },
+    "zero_padding2d_100_output" : {
+      "k" : 192,
+      "w" : 26,
+      "n" : 1,
+      "h" : 26
+    },
+    "activation_177_output" : {
+      "k" : 160,
+      "w" : 6,
+      "n" : 1,
+      "h" : 6
+    },
+    "max_pooling2d_29_output" : {
+      "k" : 320,
+      "w" : 5,
+      "n" : 1,
+      "h" : 5
+    },
+    "activation_153_output" : {
+      "k" : 64,
+      "w" : 24,
+      "n" : 1,
+      "h" : 24
+    },
+    "zero_padding2d_107_output" : {
+      "k" : 128,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "activation_182_output" : {
+      "k" : 384,
+      "w" : 3,
+      "n" : 1,
+      "h" : 3
+    },
+    "activation_172_output" : {
+      "k" : 192,
+      "w" : 6,
+      "n" : 1,
+      "h" : 6
+    },
+    "zero_padding2d_115_output" : {
+      "k" : 640,
+      "w" : 3,
+      "n" : 1,
+      "h" : 3
+    },
+    "activation_187_output" : {
+      "k" : 96,
+      "w" : 1,
+      "n" : 1,
+      "h" : 1
+    },
+    "zero_padding2d_97_output" : {
+      "k" : 3,
+      "w" : 102,
+      "n" : 1,
+      "h" : 102
+    },
+    "concatenate_35_output" : {
+      "k" : 736,
+      "w" : 3,
+      "n" : 1,
+      "h" : 3
+    },
+    "average_pooling2d_18_output_89_post_scale" : {
+      "k" : 640,
+      "w" : 2,
+      "n" : 1,
+      "h" : 2
+    },
+    "average_pooling2d_18_output_89_post_scale_shift" : {
+      "k" : 640,
+      "w" : 2,
+      "n" : 1,
+      "h" : 2
+    },
+    "mult9_5a_output" : {
+      "k" : 1024,
+      "w" : 1,
+      "n" : 1,
+      "h" : 1
+    },
+    "power2_5a_output" : {
+      "k" : 1024,
+      "w" : 3,
+      "n" : 1,
+      "h" : 3
+    },
+    "activation_167_output" : {
+      "k" : 128,
+      "w" : 12,
+      "n" : 1,
+      "h" : 12
+    },
+    "mult9_4a_output" : {
+      "k" : 640,
+      "w" : 2,
+      "n" : 1,
+      "h" : 2
+    },
+    "zero_padding2d_98_output" : {
+      "k" : 64,
+      "w" : 50,
+      "n" : 1,
+      "h" : 50
+    },
+    "activation_157_output" : {
+      "k" : 16,
+      "w" : 12,
+      "n" : 1,
+      "h" : 12
+    },
+    "average_pooling2d_20_output" : {
+      "k" : 736,
+      "w" : 1,
+      "n" : 1,
+      "h" : 1
+    },
+    "activation_162_output" : {
+      "k" : 128,
+      "w" : 12,
+      "n" : 1,
+      "h" : 12
+    },
+    "activation_186_output" : {
+      "k" : 384,
+      "w" : 3,
+      "n" : 1,
+      "h" : 3
+    },
+    "activation_176_output" : {
+      "k" : 256,
+      "w" : 6,
+      "n" : 1,
+      "h" : 6
+    },
+    "activation_181_output" : {
+      "k" : 96,
+      "w" : 3,
+      "n" : 1,
+      "h" : 3
+    },
+    "concatenate_30_output" : {
+      "k" : 320,
+      "w" : 12,
+      "n" : 1,
+      "h" : 12
+    },
+    "zero_padding2d_106_output" : {
+      "k" : 64,
+      "w" : 12,
+      "n" : 1,
+      "h" : 12
+    },
+    "sqrt_3b_output" : {
+      "k" : 256,
+      "w" : 4,
+      "n" : 1,
+      "h" : 4
+    },
+    "zero_padding2d_99_output" : {
+      "k" : 64,
+      "w" : 26,
+      "n" : 1,
+      "h" : 26
+    },
+    "zero_padding2d_114_output" : {
+      "k" : 64,
+      "w" : 10,
+      "n" : 1,
+      "h" : 10
+    },
+    "activation_152_output" : {
+      "k" : 64,
+      "w" : 48,
+      "n" : 1,
+      "h" : 48
+    },
+    "activation_166_output" : {
+      "k" : 64,
+      "w" : 12,
+      "n" : 1,
+      "h" : 12
+    },
+    "activation_156_output" : {
+      "k" : 128,
+      "w" : 12,
+      "n" : 1,
+      "h" : 12
+    },
+    "average_pooling2d_18_output" : {
+      "k" : 640,
+      "w" : 2,
+      "n" : 1,
+      "h" : 2
+    },
+    "average_pooling2d_17_output_46_post_scale" : {
+      "k" : 256,
+      "w" : 4,
+      "n" : 1,
+      "h" : 4
+    },
+    "zero_padding2d_105_output" : {
+      "k" : 32,
+      "w" : 16,
+      "n" : 1,
+      "h" : 16
+    },
+    "activation_161_output" : {
+      "k" : 96,
+      "w" : 12,
+      "n" : 1,
+      "h" : 12
+    },
+    "activation_171_output" : {
+      "k" : 96,
+      "w" : 6,
+      "n" : 1,
+      "h" : 6
+    },
+    "concatenate_29_output" : {
+      "k" : 256,
+      "w" : 12,
+      "n" : 1,
+      "h" : 12
+    },
+    "activation_185_output" : {
+      "k" : 96,
+      "w" : 3,
+      "n" : 1,
+      "h" : 3
+    },
+    "max_pooling2d_26_output" : {
+      "k" : 64,
+      "w" : 24,
+      "n" : 1,
+      "h" : 24
+    },
+    "zero_padding2d_113_output" : {
+      "k" : 160,
+      "w" : 8,
+      "n" : 1,
+      "h" : 8
+    },
+    "activation_180_output" : {
+      "k" : 128,
+      "w" : 3,
+      "n" : 1,
+      "h" : 3
+    },
+    "concatenate_34_output" : {
+      "k" : 736,
+      "w" : 3,
+      "n" : 1,
+      "h" : 3
+    },
+    "zero_padding2d_104_output" : {
+      "k" : 96,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "flatten_5_output" : {
+      "k" : 736,
+      "w" : 1,
+      "n" : 1,
+      "h" : 1
+    },
+    "average_pooling2d_19_output_130_post_scale_shift" : {
+      "k" : 1024,
+      "w" : 1,
+      "n" : 1,
+      "h" : 1
+    },
+    "lrn_2_output" : {
+      "k" : 192,
+      "w" : 24,
+      "n" : 1,
+      "h" : 24
+    },
+    "zero_padding2d_119_output" : {
+      "k" : 96,
+      "w" : 3,
+      "n" : 1,
+      "h" : 3
+    },
+    "zero_padding2d_112_output" : {
+      "k" : 128,
+      "w" : 6,
+      "n" : 1,
+      "h" : 6
+    },
+    "output" : {
+      "k" : 128,
+      "w" : 1,
+      "n" : 1,
+      "h" : 1
+    },
+    "activation_175_output" : {
+      "k" : 128,
+      "w" : 2,
+      "n" : 1,
+      "h" : 2
+    },
+    "activation_165_output" : {
+      "k" : 64,
+      "w" : 4,
+      "n" : 1,
+      "h" : 4
+    },
+    "activation_170_output" : {
+      "k" : 64,
+      "w" : 6,
+      "n" : 1,
+      "h" : 6
+    },
+    "average_pooling2d_19_output_130_post_scale" : {
+      "k" : 1024,
+      "w" : 1,
+      "n" : 1,
+      "h" : 1
+    },
+    "activation_184_output" : {
+      "k" : 256,
+      "w" : 3,
+      "n" : 1,
+      "h" : 3
+    },
+    "power2_4a_output" : {
+      "k" : 640,
+      "w" : 6,
+      "n" : 1,
+      "h" : 6
+    },
+    "activation_160_output" : {
+      "k" : 64,
+      "w" : 12,
+      "n" : 1,
+      "h" : 12
+    },
+    "data" : {
+      "k" : 3,
+      "w" : 96,
+      "n" : 1,
+      "h" : 96
+    },
+    "average_pooling2d_17_output_46_post_scale_shift" : {
+      "k" : 256,
+      "w" : 4,
+      "n" : 1,
+      "h" : 4
+    },
+    "concatenate_33_output" : {
+      "k" : 1024,
+      "w" : 3,
+      "n" : 1,
+      "h" : 3
+    },
+    "max_pooling2d_27_output" : {
+      "k" : 192,
+      "w" : 12,
+      "n" : 1,
+      "h" : 12
+    },
+    "lrn_1_output" : {
+      "k" : 64,
+      "w" : 24,
+      "n" : 1,
+      "h" : 24
+    },
+    "activation_155_output" : {
+      "k" : 96,
+      "w" : 12,
+      "n" : 1,
+      "h" : 12
+    },
+    "activation_179_output" : {
+      "k" : 64,
+      "w" : 6,
+      "n" : 1,
+      "h" : 6
+    },
+    "activation_169_output" : {
+      "k" : 32,
+      "w" : 12,
+      "n" : 1,
+      "h" : 12
+    },
+    "sqrt_4a_output" : {
+      "k" : 640,
+      "w" : 2,
+      "n" : 1,
+      "h" : 2
+    },
+    "activation_174_output" : {
+      "k" : 64,
+      "w" : 6,
+      "n" : 1,
+      "h" : 6
+    },
+    "zero_padding2d_103_output" : {
+      "k" : 32,
+      "w" : 12,
+      "n" : 1,
+      "h" : 12
+    },
+    "activation_164_output" : {
+      "k" : 64,
+      "w" : 12,
+      "n" : 1,
+      "h" : 12
+    },
+    "activation_188_output" : {
+      "k" : 256,
+      "w" : 3,
+      "n" : 1,
+      "h" : 3
+    },
+    "zero_padding2d_118_output" : {
+      "k" : 96,
+      "w" : 5,
+      "n" : 1,
+      "h" : 5
+    },
+    "zero_padding2d_111_output" : {
+      "k" : 32,
+      "w" : 10,
+      "n" : 1,
+      "h" : 10
+    },
+    "concatenate_32_output" : {
+      "k" : 640,
+      "w" : 6,
+      "n" : 1,
+      "h" : 6
+    },
+    "max_pooling2d_30_output" : {
+      "k" : 640,
+      "w" : 2,
+      "n" : 1,
+      "h" : 2
+    },
+    "zero_padding2d_109_output" : {
+      "k" : 320,
+      "w" : 6,
+      "n" : 1,
+      "h" : 6
+    },
+    "zero_padding2d_102_output" : {
+      "k" : 16,
+      "w" : 16,
+      "n" : 1,
+      "h" : 16
+    },
+    "activation_159_output" : {
+      "k" : 32,
+      "w" : 5,
+      "n" : 1,
+      "h" : 5
+    },
+    "max_pooling2d_28_output" : {
+      "k" : 192,
+      "w" : 5,
+      "n" : 1,
+      "h" : 5
+    },
+    "activation_154_output" : {
+      "k" : 192,
+      "w" : 24,
+      "n" : 1,
+      "h" : 24
+    },
+    "zero_padding2d_117_output" : {
+      "k" : 96,
+      "w" : 3,
+      "n" : 1,
+      "h" : 3
+    },
+    "activation_168_output" : {
+      "k" : 256,
+      "w" : 6,
+      "n" : 1,
+      "h" : 6
+    },
+    "zero_padding2d_110_output" : {
+      "k" : 96,
+      "w" : 8,
+      "n" : 1,
+      "h" : 8
+    },
+    "mult9_3b_output" : {
+      "k" : 256,
+      "w" : 4,
+      "n" : 1,
+      "h" : 4
+    },
+    "activation_183_output" : {
+      "k" : 96,
+      "w" : 1,
+      "n" : 1,
+      "h" : 1
+    },
+    "activation_178_output" : {
+      "k" : 256,
+      "w" : 3,
+      "n" : 1,
+      "h" : 3
+    },
+    "average_pooling2d_19_output" : {
+      "k" : 1024,
+      "w" : 1,
+      "n" : 1,
+      "h" : 1
+    },
+    "activation_173_output" : {
+      "k" : 32,
+      "w" : 6,
+      "n" : 1,
+      "h" : 6
+    },
+    "average_pooling2d_17_output" : {
+      "k" : 256,
+      "w" : 4,
+      "n" : 1,
+      "h" : 4
+    },
+    "dense_layer_output" : {
+      "k" : 128,
+      "w" : 1,
+      "n" : 1,
+      "h" : 1
+    },
+    "zero_padding2d_108_output" : {
+      "k" : 32,
+      "w" : 16,
+      "n" : 1,
+      "h" : 16
+    },
+    "zero_padding2d_101_output" : {
+      "k" : 96,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "concatenate_31_output" : {
+      "k" : 640,
+      "w" : 6,
+      "n" : 1,
+      "h" : 6
+    },
+    "power2_3b_output" : {
+      "k" : 256,
+      "w" : 12,
+      "n" : 1,
+      "h" : 12
+    }
+  }
+}
