@@ -30,7 +30,7 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 ## Requirements
 - iOS 11.3+
 - Xcode 8.3+
-- Swift 3.1+
+- Swift 4.0+
 
 ## Installation
 
@@ -68,10 +68,10 @@ $ pod install
 
 In Your App delegate call SFaceCompare.opncvwrp.loadData() to load model related data. This Operation is long and async. So better put this before using methods from pod.
 ```swift
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions:    [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-      SFaceCompare.opncvwrp.loadData()
-      return true
-    }
+func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    SFaceCompare.opncvwrp.loadData()
+    return true
+}
 ```
 A ssimple as posible 
 ```swift
@@ -86,4 +86,4 @@ SFaceCompare is owned and maintained by [Bohdan Mihiliev](https://github.com/Boh
 
 ## License
 
-SFaceCompare is available under the MIT license. See the [LICENSE] (https://github.com/BohdanNikoletti/SFaceCompare/blob/master/LICENSE) file for more info.
+SFaceCompare is available under the MIT license. See the [LICENSE](https://github.com/BohdanNikoletti/SFaceCompare/blob/master/LICENSE) file for more info.
