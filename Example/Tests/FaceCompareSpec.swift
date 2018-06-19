@@ -23,26 +23,84 @@ final class FaceCompareSpec: QuickSpec {
                 it ("Two different Nolan shots") {
                     let faceComparator = SFaceCompare.init(on: ImagesResources.christoferNolanFace,
                                                            and: ImagesResources.christoferNolanFace2)
-                    faceComparator.compareFaces(succes: { [weak self] results in
-                        
-                        }, failure: { [weak self] error in
+                    waitUntil(timeout: 100) { done in
+                        faceComparator.compareFaces(succes: { results in
+                            expect(results).notTo(beEmpty())
+                            done()
+                        }, failure: { error in
                             fail(error.localizedDescription)
-                    })
+                            done()
+                        })
+                    }
+                }
+                it ("Same Nolan shots") {
+                    let faceComparator = SFaceCompare.init(on: ImagesResources.christoferNolanFace,
+                                                           and: ImagesResources.christoferNolanFace)
+                    waitUntil(timeout: 100) { done in
+                        faceComparator.compareFaces(succes: { results in
+                            expect(results).notTo(beEmpty())
+                            done()
+                        }, failure: { error in
+                            fail(error.localizedDescription)
+                            done()
+                        })
+                    }
+                }
+            }
+            context("Example with Michael Bay faces") {
+                it ("Two different Bay shots") {
+                    let faceComparator = SFaceCompare(on: ImagesResources.michaelBayFace,
+                                                      and: ImagesResources.michaelBayFace2)
+                    waitUntil(timeout: 100) { done in
+                        faceComparator.compareFaces(succes: { results in
+                            expect(results).notTo(beEmpty())
+                            done()
+                        }, failure: { error in
+                            fail(error.localizedDescription)
+                            done()
+                        })
+                    }
                 }
                 
-                
-                it("will eventually pass") {
-                    var time = "passing"
-                    
-                    DispatchQueue.main.async {
-                        time = "done"
+                it ("Same Michael Bay shots") {
+                    let faceComparator = SFaceCompare(on: ImagesResources.michaelBayFace,
+                                                      and: ImagesResources.michaelBayFace)
+                    waitUntil(timeout: 100) { done in
+                        faceComparator.compareFaces(succes: { results in
+                            expect(results).notTo(beEmpty())
+                            done()
+                        }, failure: { error in
+                            fail(error.localizedDescription)
+                            done()
+                        })
                     }
-                    
-                    waitUntil { done in
-                        Thread.sleep(forTimeInterval: 0.5)
-                        expect(time) == "done"
-                        
-                        done()
+                }
+            }
+        }
+        describe("Faces on images are not the same") {
+            context("Example with Christopher Nolan vs Michael Bay face") {
+                it ("First data set") {
+                    let faceComparator = SFaceCompare.init(on: ImagesResources.christoferNolanFace,
+                                                           and: ImagesResources.michaelBayFace)
+                    waitUntil(timeout: 100) { done in
+                        faceComparator.compareFaces(succes: { results in
+                            expect(results).to(beEmpty())
+                            done()
+                        }, failure: { error in
+                            done()
+                        })
+                    }
+                }
+                it ("Second data set") {
+                    let faceComparator = SFaceCompare.init(on: ImagesResources.christoferNolanFace2,
+                                                           and: ImagesResources.michaelBayFace2)
+                    waitUntil(timeout: 100) { done in
+                        faceComparator.compareFaces(succes: { results in
+                            expect(results).to(beEmpty())
+                            done()
+                        }, failure: { error in
+                            done()
+                        })
                     }
                 }
             }

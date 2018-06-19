@@ -19,6 +19,5 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
       SFaceCompare.opncvwrp.loadData()
       return true
     }
-
 }
 
