@@ -7,12 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4009169E20D121860081F85A /* TestImages.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4009169C20D011270081F85A /* TestImages.xcassets */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
-		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
+		607FACEC1AFB9204008FA782 /* FaceCompareSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* FaceCompareSpec.swift */; };
 		7A4D57012E5FEF570224A80E /* Pods_SFaceCompare_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1133F203E26A4E4D632BFD92 /* Pods_SFaceCompare_Tests.framework */; };
 		7ABB8FCD3BB84BFA6D51562A /* Pods_SFaceCompare_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24EFF6A7FAEE47F7DD81B965 /* Pods_SFaceCompare_Example.framework */; };
 		A9D3A24020C957AE000A5B74 /* Faces.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = A9D3A23F20C957AE000A5B74 /* Faces.mlmodel */; };
@@ -33,6 +34,7 @@
 		1133F203E26A4E4D632BFD92 /* Pods_SFaceCompare_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SFaceCompare_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		18457223FA380613B806C40F /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		24EFF6A7FAEE47F7DD81B965 /* Pods_SFaceCompare_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SFaceCompare_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4009169C20D011270081F85A /* TestImages.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = TestImages.xcassets; sourceTree = "<group>"; };
 		607FACD01AFB9204008FA782 /* SFaceCompare_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SFaceCompare_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -42,7 +44,7 @@
 		607FACDF1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		607FACE51AFB9204008FA782 /* SFaceCompare_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SFaceCompare_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
+		607FACEB1AFB9204008FA782 /* FaceCompareSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceCompareSpec.swift; sourceTree = "<group>"; };
 		74DDCE2DA90CDD277CC13F6F /* Pods-SFaceCompare_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SFaceCompare_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-SFaceCompare_Example/Pods-SFaceCompare_Example.release.xcconfig"; sourceTree = "<group>"; };
 		8579E823E40A91A0C0F904A9 /* SFaceCompare.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = SFaceCompare.podspec; path = ../SFaceCompare.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		A9D3A23F20C957AE000A5B74 /* Faces.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = Faces.mlmodel; path = ../../SFaceCompare/Classes/Faces.mlmodel; sourceTree = "<group>"; };
@@ -127,8 +129,9 @@
 		607FACE81AFB9204008FA782 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				607FACEB1AFB9204008FA782 /* Tests.swift */,
+				607FACEB1AFB9204008FA782 /* FaceCompareSpec.swift */,
 				607FACE91AFB9204008FA782 /* Supporting Files */,
+				4009169C20D011270081F85A /* TestImages.xcassets */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -259,6 +262,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4009169E20D121860081F85A /* TestImages.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -356,7 +360,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				607FACEC1AFB9204008FA782 /* Tests.swift in Sources */,
+				607FACEC1AFB9204008FA782 /* FaceCompareSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
