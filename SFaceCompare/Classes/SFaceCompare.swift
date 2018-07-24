@@ -9,7 +9,7 @@ import Vision
 import SameFace
 
 /// Main Comparator class
-public class SFaceCompare {
+public final class SFaceCompare {
   
   // MARK: - Properties
   private static let opncvwrp: OpenCVWrapper = OpenCVWrapper()
@@ -51,17 +51,24 @@ public class SFaceCompare {
    - parameter failure: Handler will call if some error occurred.
    
    */
-  public func compareFaces(succes: @escaping ([DetectionResult])->(), failure: @escaping (Error) -> ()) {
+  public func compareFaces(succes: @escaping ([DetectionResult])->(),
+                           failure: @escaping (Error) -> ()) {
     
     guard let firstFaceDetectionOperation = FaceDetectionOperation(input: firstImage, objectsCountToDetect: 1,
                                                                    orientation: CGImagePropertyOrientation.up) else {
-                                                                    Logger.e("Can not instantiate face detection for photoOfDidinaID of type UIImage")
+                                                                    DispatchQueue.main.async {
+                                                                      let error = SFaceError.canNotCreate("firstFaceDetectionOperation", reason: nil)
+                                                                      failure(error)
+                                                                    }
                                                                     return
     }
     
     guard let secondFaceDetectionOperation = FaceDetectionOperation(input: secondImage, objectsCountToDetect: 1,
                                                                     orientation: CGImagePropertyOrientation.up) else {
-                                                                      Logger.e("Can not instantiate face detection for photoOfDidinaID of type UIImage")
+                                                                      DispatchQueue.main.async {
+                                                                        let error = SFaceError.canNotCreate("secondFaceDetectionOperation", reason: nil)
+                                                                        failure(error)
+                                                                      }
                                                                       return
     }
     
@@ -70,7 +77,7 @@ public class SFaceCompare {
       // Checking results from firstFaceDetectionOperation
       guard let firstFaceOperationResults = firstFaceDetectionOperation.operationResult?.first else {
         DispatchQueue.main.async {
-          let error = SFaceError.emptyResultsIn("Face detection Operation",
+          let error = SFaceError.emptyResultsIn("Firs Face detection Operation",
                                                 reason: nil)
           failure(error)
         }
@@ -80,7 +87,7 @@ public class SFaceCompare {
       // Checking results from secondFaceDetectionOperation
       guard let secondFaceOperationResults = secondFaceDetectionOperation.operationResult?.first else {
         DispatchQueue.main.async {
-          let error = SFaceError.emptyResultsIn("Face detection Operation",
+          let error = SFaceError.emptyResultsIn("Second Face detection Operation",
                                                 reason: nil)
           failure(error)
         }
