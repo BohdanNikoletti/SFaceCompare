@@ -8,7 +8,6 @@
 import Vision
 import SameFace
 
-/// Main Comparator class
 public final class SFaceCompare {
   
   // MARK: - Properties
@@ -17,7 +16,7 @@ public final class SFaceCompare {
   private let secondImage: UIImage
   private let operationQueue: OperationQueue
   
-  // MARK: - Initalizers
+  // MARK: - Initializer
   /**
    Instantiates face compare process for given images.
    
@@ -37,7 +36,7 @@ public final class SFaceCompare {
    Loads important additional data for face normalization.
    ## Important Notes ##
    1. Can take some time.
-   2. Is asyncronus inside.
+   2. Is asynchronous inside.
    3. You should call this method ASAP
    */
   public static func prepareData(){
@@ -45,8 +44,8 @@ public final class SFaceCompare {
   }
   
   /**
-   Compares faces from the two input image.
-   
+   Compares faces detected on input images.
+
    - parameter succes: Handler will call if Faces are the same.
    - parameter failure: Handler will call if some error occurred.
    
