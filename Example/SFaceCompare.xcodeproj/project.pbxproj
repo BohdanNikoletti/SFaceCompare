@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		4009169E20D121860081F85A /* TestImages.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4009169C20D011270081F85A /* TestImages.xcassets */; };
-		402206DA20D91FE500234A79 /* Faces.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = A9D3A23F20C957AE000A5B74 /* Faces.mlmodel */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
@@ -17,7 +16,6 @@
 		607FACEC1AFB9204008FA782 /* FaceCompareSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* FaceCompareSpec.swift */; };
 		7A4D57012E5FEF570224A80E /* Pods_SFaceCompare_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1133F203E26A4E4D632BFD92 /* Pods_SFaceCompare_Tests.framework */; };
 		7ABB8FCD3BB84BFA6D51562A /* Pods_SFaceCompare_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24EFF6A7FAEE47F7DD81B965 /* Pods_SFaceCompare_Example.framework */; };
-		A9D3A24020C957AE000A5B74 /* Faces.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = A9D3A23F20C957AE000A5B74 /* Faces.mlmodel */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,7 +46,6 @@
 		607FACEB1AFB9204008FA782 /* FaceCompareSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceCompareSpec.swift; sourceTree = "<group>"; };
 		74DDCE2DA90CDD277CC13F6F /* Pods-SFaceCompare_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SFaceCompare_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-SFaceCompare_Example/Pods-SFaceCompare_Example.release.xcconfig"; sourceTree = "<group>"; };
 		8579E823E40A91A0C0F904A9 /* SFaceCompare.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = SFaceCompare.podspec; path = ../SFaceCompare.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		A9D3A23F20C957AE000A5B74 /* Faces.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = Faces.mlmodel; path = ../../SFaceCompare/Classes/Faces.mlmodel; sourceTree = "<group>"; };
 		B8CD22CD45DD0677A5ECA54B /* Pods-SFaceCompare_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SFaceCompare_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SFaceCompare_Tests/Pods-SFaceCompare_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		C11A84D09A52B127316814AB /* Pods-SFaceCompare_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SFaceCompare_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SFaceCompare_Tests/Pods-SFaceCompare_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		EBCBBD94591C5DDB0AD6B595 /* Pods-SFaceCompare_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SFaceCompare_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SFaceCompare_Example/Pods-SFaceCompare_Example.debug.xcconfig"; sourceTree = "<group>"; };
@@ -107,7 +104,6 @@
 		607FACD21AFB9204008FA782 /* Example for SFaceCompare */ = {
 			isa = PBXGroup;
 			children = (
-				A9D3A23F20C957AE000A5B74 /* Faces.mlmodel */,
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
 				607FACD71AFB9204008FA782 /* ViewController.swift */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
@@ -352,7 +348,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
-				A9D3A24020C957AE000A5B74 /* Faces.mlmodel in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -362,7 +357,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				607FACEC1AFB9204008FA782 /* FaceCompareSpec.swift in Sources */,
-				402206DA20D91FE500234A79 /* Faces.mlmodel in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
