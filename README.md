@@ -1,11 +1,13 @@
-# SFaceCompare
-
+<img src="https://cdn.rawgit.com/BohdanNikoletti/SFaceCompare/7acc1b9f/GraphicMaterials/logo.png" width="64" height="64"> SFaceCompare: compare faces on your iOS device
+======================================
 [![CI Status](https://img.shields.io/travis/BohdanNikoletti/SFaceCompare.svg?style=flat)](https://travis-ci.org/BohdanNikoletti/SFaceCompare)
+![iOS 11.3+](https://img.shields.io/badge/iOS-11.3%2B-blue.svg)
+![Swift 4.0+](https://img.shields.io/badge/Swift-4.0%2B-orange.svg)
 [![Version](https://img.shields.io/cocoapods/v/SFaceCompare.svg?style=flat)](https://cocoapods.org/pods/SFaceCompare)
 [![License](https://img.shields.io/cocoapods/l/SFaceCompare.svg?style=flat)](https://cocoapods.org/pods/SFaceCompare)
 [![Platform](https://img.shields.io/cocoapods/p/SFaceCompare.svg?style=flat)](https://cocoapods.org/pods/SFaceCompare)
 
-SFaceCompare is an simple libray for iOS to find and compare faces.
+SFaceCompare is an simple library for iOS to find and compare faces.
 SFaceCompare works on top of dlib and OpenCV libraries. With usage of trained model.
 
 ## Features
@@ -13,24 +15,17 @@ SFaceCompare works on top of dlib and OpenCV libraries. With usage of trained mo
 - [x] Face detecting / extracting
 - [x] Face aligment
 - [x] Face matching
-- [ ] Embed Faces.mlmodel into pod
-- [ ] Support iOS 11.0
-- [ ] Complete Documentation
-- [ ] Test coverage
 
 ## Used Libraries
 
 - [dlib](https://github.com/davisking/dlib) - Image processing
 - [openCV](https://github.com/opencv/opencv) - Detecting face landmarks and face alignment
 
+These libraries were used to create SameFace.framework which src on CVDlibUtils branch
+
 ## Example
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
-
-## Requirements
-- iOS 11.3+
-- Xcode 8.3+
-- Swift 4.0+
 
 ## Installation
 
@@ -60,25 +55,25 @@ Then, run the following command:
 ```bash
 $ pod install
 ```
-## Usage Example 
+## Usage Example
+Faces are the same           |  Faces are different
+:---------------------------:|:-------------------------:
+<img src="https://rawgit.com/BohdanNikoletti/SFaceCompare/master/GraphicMaterials/usageSampleSucces.gif" /> | <img src="https://rawgit.com/BohdanNikoletti/SFaceCompare/master/GraphicMaterials/compareWithDiffFaces.gif" />
 
 ##### AppDelegate.swift
-
- **IMPORTENT! Drag a Faces.mlmodel from Example app in your project.**
-
 In Your App delegate call SFaceCompare.opncvwrp.loadData() to load model related data. This Operation is long and async. So better put this before using methods from pod.
 ```swift
 func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-    SFaceCompare.opncvwrp.loadData()
+    SFaceCompare.prepareData()
     return true
 }
 ```
-A ssimple as posible 
+As simple as possible
 ```swift
 // 1: Create compare object
-SFaceCompare(on: image1, and: image2)
-// 2: Call compareFaces method with succes and error handlers
-faceComparator.compareFaces(succes: { results in }, failure: {  error in })
+let faceComparator = SFaceCompare(on: image1, and: image2)
+// 2: Call compareFaces method with success and error handlers
+faceComparator.compareFaces(success: { results in }, failure: {  error in })
 ```
 ## Credits
 
