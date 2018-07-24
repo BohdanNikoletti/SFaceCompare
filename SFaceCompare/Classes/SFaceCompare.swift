@@ -8,40 +8,67 @@
 import Vision
 import SameFace
 
-public class SFaceCompare {
+public final class SFaceCompare {
   
-  public static let opncvwrp: OpenCVWrapper = OpenCVWrapper()
+  // MARK: - Properties
+  private static let opncvwrp: OpenCVWrapper = OpenCVWrapper()
+  private let firstImage: UIImage
+  private let secondImage: UIImage
   private let operationQueue: OperationQueue
-  let firstImage: UIImage
-  let secondImage: UIImage
   
+  // MARK: - Initializer
+  /**
+   Instantiates face compare process for given images.
+   
+   - parameter on: a UIImage where face to compare should be found.
+   - parameter and: a UIImage where face to compare should be found.
+   
+   */
   public init(on firstImage: UIImage, and secondImage: UIImage ){
     self.firstImage = firstImage
     self.secondImage = secondImage
     self.operationQueue = OperationQueue()
     self.operationQueue.qualityOfService = .background
-    //    self.opncvwrp = OpenCVWrapper()
+  }
+  
+  // MARK: - Public methods
+  /**
+   Loads important additional data for face normalization.
+   ## Important Notes ##
+   1. Can take some time.
+   2. Is asynchronous inside.
+   3. You should call this method ASAP
+   */
+  public static func prepareData(){
+    opncvwrp.loadData()
   }
   
   /**
-   Compares faces from the two input image.
-   
+   Compares faces detected on input images.
+
    - parameter succes: Handler will call if Faces are the same.
    - parameter failure: Handler will call if some error occurred.
    
    */
-  public func compareFaces(succes: @escaping ([DetectionResult])->(), failure: @escaping (Error) -> () ) { //  func areSameFaces(on firstImage: UIImage, and secondImage: UIImage) {
+  public func compareFaces(succes: @escaping ([DetectionResult])->(),
+                           failure: @escaping (Error) -> ()) {
     
     guard let firstFaceDetectionOperation = FaceDetectionOperation(input: firstImage, objectsCountToDetect: 1,
                                                                    orientation: CGImagePropertyOrientation.up) else {
-                                                                    Logger.e("Can not instantiate face detection for photoOfDidinaID of type UIImage")
-                                                                    return //false
+                                                                    DispatchQueue.main.async {
+                                                                      let error = SFaceError.canNotCreate("firstFaceDetectionOperation", reason: nil)
+                                                                      failure(error)
+                                                                    }
+                                                                    return
     }
     
     guard let secondFaceDetectionOperation = FaceDetectionOperation(input: secondImage, objectsCountToDetect: 1,
                                                                     orientation: CGImagePropertyOrientation.up) else {
-                                                                      Logger.e("Can not instantiate face detection for photoOfDidinaID of type UIImage")
-                                                                      return //false
+                                                                      DispatchQueue.main.async {
+                                                                        let error = SFaceError.canNotCreate("secondFaceDetectionOperation", reason: nil)
+                                                                        failure(error)
+                                                                      }
+                                                                      return
     }
     
     // Creating final operation
@@ -49,7 +76,8 @@ public class SFaceCompare {
       // Checking results from firstFaceDetectionOperation
       guard let firstFaceOperationResults = firstFaceDetectionOperation.operationResult?.first else {
         DispatchQueue.main.async {
-          let error = SFaceError.emptyResultsIn("Face detection Operation", reason: nil)
+          let error = SFaceError.emptyResultsIn("Firs Face detection Operation",
+                                                reason: nil)
           failure(error)
         }
         return
@@ -58,7 +86,8 @@ public class SFaceCompare {
       // Checking results from secondFaceDetectionOperation
       guard let secondFaceOperationResults = secondFaceDetectionOperation.operationResult?.first else {
         DispatchQueue.main.async {
-          let error = SFaceError.emptyResultsIn("Face detection Operation", reason: nil)
+          let error = SFaceError.emptyResultsIn("Second Face detection Operation",
+                                                reason: nil)
           failure(error)
         }
         return
@@ -79,16 +108,21 @@ public class SFaceCompare {
           return
       }
       do {
-        let net = Faces()
+        
+        let bundle = Bundle(for: Faces.self)
+        let url = bundle.url(forResource: "Faces", withExtension: "mlmodelc")!
+        let net = try Faces(contentsOf: url)
+        
         guard let firstPixelBuffer = firstAlignedFace.cvPixelBuffer,
           let secondPixelBuffer = secondAlignedFace.cvPixelBuffer else {
             DispatchQueue.main.async {
-              let error = SFaceError.wrongFaces(reason: "Can not extract cvPixelBuffer to one of image. Try other images.")
+              let error = SFaceError
+                .wrongFaces(reason: "Can not extract cvPixelBuffer to one of image. Try other images.")
               failure(error)
             }
             return
         }
-      
+        
         // neural networks answers getting
         let firstOutput = try net.prediction(data: firstPixelBuffer).output
         let secondOutput = try net.prediction(data: secondPixelBuffer).output
@@ -99,7 +133,6 @@ public class SFaceCompare {
           result += (Double(truncating: firstOutput[idx]) - Double(truncating: secondOutput[idx]))
             * (Double(truncating: firstOutput[idx]) - Double(truncating: secondOutput[idx]))
         }
-        print(result)
         if result < 1.0 {
           DispatchQueue.main.async {
             succes([firstFaceOperationResults, secondFaceOperationResults])

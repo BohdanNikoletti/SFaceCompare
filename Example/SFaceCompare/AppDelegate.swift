@@ -16,9 +16,9 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
   
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-      SFaceCompare.opncvwrp.loadData()
+      // Loads important additional data
+      SFaceCompare.prepareData()
       return true
     }
-
 }
 

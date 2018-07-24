@@ -17,7 +17,6 @@ class BaseDetectionProcessOperation<RequestType: VNRequest>: Operation {
   final let vNImageRequestHandler: VNImageRequestHandler
   final let cGAffineTransform: CGAffineTransform
   final private (set) var objectsCountToDetect = 0
-  //  final private (set) var vnRequestResults: [RequestType] = []
   final var operationResult: [DetectionResult]?
   
   // MARK: - Computed variables
