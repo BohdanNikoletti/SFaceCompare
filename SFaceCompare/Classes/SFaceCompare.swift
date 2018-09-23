@@ -108,11 +108,7 @@ public final class SFaceCompare {
           return
       }
       do {
-        
-        let bundle = Bundle(for: Faces.self)
-        let url = bundle.url(forResource: "Faces", withExtension: "mlmodelc")!
-        let net = try Faces(contentsOf: url)
-        
+        let net = Faces()
         guard let firstPixelBuffer = firstAlignedFace.cvPixelBuffer,
           let secondPixelBuffer = secondAlignedFace.cvPixelBuffer else {
             DispatchQueue.main.async {

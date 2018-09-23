@@ -4,7 +4,7 @@ Pod::Spec.new do |s|
   s.summary          = 'Simple lib fro iOS to find and compare faces.'
   s.requires_arc     = true
   s.static_framework = true
-  s.swift_version    = '4.0'
+  s.swift_version    = '4.2'
   s.description      = <<-DESC
   SFaceCompare is an simple libray for iOS to find and compare faces. SFaceCompare works on top of dlib and OpenCV libraries.
   With usage of trained model.
