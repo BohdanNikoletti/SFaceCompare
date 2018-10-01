@@ -15,6 +15,7 @@
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* FaceCompareSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* FaceCompareSpec.swift */; };
 		7829CEA82157B43500422D62 /* Faces.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 7829CEA72157B40400422D62 /* Faces.mlmodel */; };
+		78F2AA9A2162568800F108F0 /* Faces.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 7829CEA72157B40400422D62 /* Faces.mlmodel */; };
 		7A4D57012E5FEF570224A80E /* Pods_SFaceCompare_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1133F203E26A4E4D632BFD92 /* Pods_SFaceCompare_Tests.framework */; };
 		7ABB8FCD3BB84BFA6D51562A /* Pods_SFaceCompare_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24EFF6A7FAEE47F7DD81B965 /* Pods_SFaceCompare_Example.framework */; };
 /* End PBXBuildFile section */
@@ -363,6 +364,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				607FACEC1AFB9204008FA782 /* FaceCompareSpec.swift in Sources */,
+				78F2AA9A2162568800F108F0 /* Faces.mlmodel in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
