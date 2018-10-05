@@ -10,10 +10,10 @@ import Vision
 final class FaceDetectionOperation: Operation {
     
     // MARK: - Properties
-    let inputImage: CIImage
-    let imageToProcess: UIImage
-    let vNImageRequestHandler: VNImageRequestHandler
     let cGAffineTransform: CGAffineTransform
+    private let inputImage: CIImage
+    private let imageToProcess: UIImage
+    private let vNImageRequestHandler: VNImageRequestHandler
     private (set) var objectsCountToDetect = 0
     private (set) var operationResult: [DetectionResult]?
     
