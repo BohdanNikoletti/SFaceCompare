@@ -2,8 +2,8 @@
 //  SFaceCompare.swift
 //  SFaceCompare
 //
-//  Created by Soft Project on 6/6/18.
-//
+//  Created by Bohdan Mihiliev on 6/6/18.
+//  Copyright © 2018 Bohdan Mihiliev. All rights reserved.
 
 import Vision
 import SameFace
@@ -39,9 +39,7 @@ public final class SFaceCompare {
    2. Is asynchronous inside.
    3. You should call this method ASAP
    */
-  public static func prepareData(){
-    opncvwrp.loadData()
-  }
+  public static func prepareData(){  opncvwrp.loadData() }
   
   /**
    Compares faces detected on input images.

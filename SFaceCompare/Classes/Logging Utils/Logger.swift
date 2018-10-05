@@ -37,8 +37,7 @@ final class Logger {
   static var ouput: LoggerOutput = .debuggerConsole
   static var showThread: Bool = false
   
-  private init() {
-  }
+  private init() { }
   
   private static func log( _ level: LoggerLevel, message: String,
                            currentTime: Date, fileName: String,

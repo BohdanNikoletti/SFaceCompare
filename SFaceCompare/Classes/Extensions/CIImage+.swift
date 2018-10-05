@@ -2,7 +2,7 @@
 //  CIImage+.swift
 //  SFaceCompare
 //
-//  Created by Soft Project on 6/5/18.
+//  Created by Bohdan Mihiliev on 6/5/18.
 //  Copyright © 2018 Bohdan Mihiliev. All rights reserved.
 //
 
