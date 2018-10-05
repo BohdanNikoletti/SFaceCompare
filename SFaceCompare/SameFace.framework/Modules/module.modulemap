@@ -1,0 +1,11 @@
+framework module SameFace {
+  umbrella header "SameFace.h"
+
+  export *
+  module * { export * }
+}
+
+module SameFace.Swift {
+    header "SameFace-Swift.h"
+    requires objc
+}
