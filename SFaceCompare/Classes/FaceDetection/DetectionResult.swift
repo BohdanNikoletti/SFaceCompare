@@ -17,13 +17,10 @@ public struct DetectionResult {
   public let image: UIImage
   /// The detected object rectangle.
   public let rect: CGRect
-  /// Additionnal information provided by operation.
-  public let payLoad: [String: Any]?
   
   // MARK: - Initializers
-  init(image: UIImage, rect: CGRect, payLoad: [String: Any]? = nil) {
+  init(image: UIImage, rect: CGRect) {
     self.image = image
     self.rect = rect
-    self.payLoad = payLoad
   }
 }
