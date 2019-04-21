@@ -1,7 +1,7 @@
 PODS:
-  - Nimble (7.3.1)
-  - Quick (1.3.2)
-  - SFaceCompare (2.6.2)
+  - Nimble (8.0.1)
+  - Quick (2.1.0)
+  - SFaceCompare (2.6.3)
 
 DEPENDENCIES:
   - Nimble
@@ -18,10 +18,10 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  Nimble: 04f732da099ea4d153122aec8c2a88fd0c7219ae
-  Quick: 2623cb30d7a7f41ca62f684f679586558f483d46
-  SFaceCompare: 818ed973abe82632f6aff5b78843813a22c3d84a
+  Nimble: 45f786ae66faa9a709624227fae502db55a8bdd0
+  Quick: 4be43f6634acfa727dd106bdf3929ce125ffa79d
+  SFaceCompare: 0df888bb9f348317cf615a92598c8512bb521651
 
 PODFILE CHECKSUM: afc4fe3e25809ac322e3d51f9d75b15dc537b44e
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.6.1
