@@ -7,7 +7,7 @@
 [![License](https://img.shields.io/cocoapods/l/SFaceCompare.svg?style=flat)](https://cocoapods.org/pods/SFaceCompare)
 [![Platform](https://img.shields.io/cocoapods/p/SFaceCompare.svg?style=flat)](https://cocoapods.org/pods/SFaceCompare)
 
-SFaceCompare is an simple library for iOS to find and compare faces.
+SFaceCompare is a simple library for iOS to find and compare faces.
 SFaceCompare works on top of dlib and OpenCV libraries. With usage of trained model.
 
 ## Features
