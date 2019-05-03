@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'SFaceCompare'
-  s.version          = '2.6.3'
+  s.version          = '2.6.4'
   s.summary          = 'Simple lib fro iOS to find and compare faces.'
   s.requires_arc     = true
   s.static_framework = true
