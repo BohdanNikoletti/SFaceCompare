@@ -74,7 +74,7 @@ public final class SFaceCompare {
       // Checking results from firstFaceDetectionOperation
       guard let firstFaceOperationResults = firstFaceDetectionOperation.operationResult?.first else {
         DispatchQueue.main.async {
-          let error = SFaceError.emptyResultsIn("Firs Face detection Operation",
+          let error = SFaceError.emptyResultsIn("First Face detection Operation",
                                                 reason: nil)
           failure(error)
         }
