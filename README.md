@@ -20,6 +20,7 @@ SFaceCompare works on top of dlib and OpenCV libraries. With usage of trained mo
 
 - [dlib](https://github.com/davisking/dlib) - Image processing
 - [openCV](https://github.com/opencv/opencv) - Detecting face landmarks and face alignment
+- [SameFace](https://github.com/BohdanNikoletti/SameFace) - Core that connects dlib & openCV functionality under the hood
 
 These libraries were used to create SameFace.framework which src on CVDlibUtils branch
 
