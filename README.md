@@ -28,7 +28,11 @@ These libraries were used to create SameFace.framework which src on CVDlibUtils 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
 ## Installation
-
+### Import Faces.mlmodel
+Make import of Faces.mlmodel file into your actual project. To make this.
+1) Open Example App provided with this repo
+2) Find Faces.mlmodel
+3) Drag/Copy-Paste into root of your project
 ### CocoaPods
 
 [CocoaPods](http://cocoapods.org) is a dependency manager for Cocoa projects. You can install it with the following command:
