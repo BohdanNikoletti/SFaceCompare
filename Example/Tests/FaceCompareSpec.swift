@@ -24,7 +24,7 @@ final class FaceCompareSpec: QuickSpec {
                     let faceComparator = SFaceCompare.init(on: ImagesResources.christoferNolanFace,
                                                            and: ImagesResources.christoferNolanFace2)
                     waitUntil(timeout: 100) { done in
-                        faceComparator.compareFaces(succes: { results in
+                        faceComparator.compareFaces(succes: { results, probability  in
                             expect(results).notTo(beEmpty())
                             done()
                         }, failure: { error in
@@ -37,7 +37,7 @@ final class FaceCompareSpec: QuickSpec {
                     let faceComparator = SFaceCompare.init(on: ImagesResources.christoferNolanFace,
                                                            and: ImagesResources.christoferNolanFace)
                     waitUntil(timeout: 100) { done in
-                        faceComparator.compareFaces(succes: { results in
+                        faceComparator.compareFaces(succes: { results, probability  in
                             expect(results).notTo(beEmpty())
                             done()
                         }, failure: { error in
@@ -52,7 +52,7 @@ final class FaceCompareSpec: QuickSpec {
                     let faceComparator = SFaceCompare(on: ImagesResources.michaelBayFace,
                                                       and: ImagesResources.michaelBayFace2)
                     waitUntil(timeout: 100) { done in
-                        faceComparator.compareFaces(succes: { results in
+                        faceComparator.compareFaces(succes: { results, probability  in
                             expect(results).notTo(beEmpty())
                             done()
                         }, failure: { error in
@@ -66,7 +66,7 @@ final class FaceCompareSpec: QuickSpec {
                     let faceComparator = SFaceCompare(on: ImagesResources.michaelBayFace,
                                                       and: ImagesResources.michaelBayFace)
                     waitUntil(timeout: 100) { done in
-                        faceComparator.compareFaces(succes: { results in
+                        faceComparator.compareFaces(succes: { results, probability  in
                             expect(results).notTo(beEmpty())
                             done()
                         }, failure: { error in
@@ -83,7 +83,7 @@ final class FaceCompareSpec: QuickSpec {
                     let faceComparator = SFaceCompare.init(on: ImagesResources.christoferNolanFace,
                                                            and: ImagesResources.michaelBayFace)
                     waitUntil(timeout: 100) { done in
-                        faceComparator.compareFaces(succes: { results in
+                        faceComparator.compareFaces(succes: { results, probability  in
                             expect(results).to(beEmpty())
                             done()
                         }, failure: { error in
@@ -95,7 +95,7 @@ final class FaceCompareSpec: QuickSpec {
                     let faceComparator = SFaceCompare.init(on: ImagesResources.christoferNolanFace2,
                                                            and: ImagesResources.michaelBayFace2)
                     waitUntil(timeout: 100) { done in
-                        faceComparator.compareFaces(succes: { results in
+                        faceComparator.compareFaces(succes: { results, probability  in
                             expect(results).to(beEmpty())
                             done()
                         }, failure: { error in

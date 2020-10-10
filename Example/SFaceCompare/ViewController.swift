@@ -22,10 +22,11 @@ final class ViewController: UIViewController {
       if images.count == 2 {
         activityIndicator.startAnimating()
         let faceComparator = SFaceCompare.init(on: self.images[0], and: self.images[1])
-        faceComparator.compareFaces(succes: { [weak self] results in
+        faceComparator.compareFaces(succes: { [weak self] results, matchingCoeff in
           self?.activityIndicator.stopAnimating()
           self?.view.backgroundColor = UIColor.green
           self?.infoLabel.text = "Yay! Faces are the same!"
+            print("Matching Coefficient: " + matchingCoeff.description)
           }, failure: { [weak self] error in
             self?.activityIndicator.stopAnimating()
             self?.infoLabel.text = (error as? SFaceError)?.localizedDescription

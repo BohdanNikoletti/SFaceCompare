@@ -129,7 +129,7 @@ public final class SFaceCompare {
         }
         if result < 1.0 {
           DispatchQueue.main.async {
-            succes([firstFaceOperationResults, secondFaceOperationResults])
+            succes([firstFaceOperationResults, secondFaceOperationResults], result)
           }
         } else {
           DispatchQueue.main.async {
