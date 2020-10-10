@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'SFaceCompare'
-  s.version          = '3.0'
+  s.version          = '3.1'
   s.summary          = 'Simple lib fro iOS to find and compare faces.'
   s.requires_arc     = true
   s.static_framework = true
@@ -15,7 +15,7 @@ Pod::Spec.new do |s|
   s.author           = { 'Bohdan Mihiliev' => 'bohdanrose1@gmail.com' }
   s.source           = { :git => 'https://github.com/BohdanNikoletti/SFaceCompare.git', :tag => s.version.to_s }
 
-  s.ios.deployment_target = '11.3'
+  s.ios.deployment_target = '12.0'
   s.preserve_paths = 'SFaceCompare/SameFace.framework'
   s.xcconfig = { 'OTHER_LDFLAGS' => '-framework SameFace' }
   s.source_files = 'SFaceCompare/Classes/**/*'
