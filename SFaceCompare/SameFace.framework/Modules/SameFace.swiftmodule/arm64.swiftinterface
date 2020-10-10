@@ -1,24 +1,12 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.2 (swiftlang-1103.0.32.1 clang-1103.0.32.29)
-// swift-module-flags: -target arm64-apple-ios11.3 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name SameFace
-import CoreML
-import Foundation
+// swift-compiler-version: Apple Swift version 5.3 (swiftlang-1200.0.29.2 clang-1200.0.30.1)
+// swift-module-flags: -target arm64-apple-ios12.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name SameFace
 @_exported import SameFace
 import Swift
-import Vision
-public struct DetectionResult {
-  public let image: UIKit.UIImage
-  public let rect: CoreGraphics.CGRect
-  public let payLoad: [Swift.String : Any]?
-}
-public struct CVUtilsInterface {
-  public static func areSameFaces(on firstImage: UIKit.UIImage, and secondImage: UIKit.UIImage, facesFound: Swift.Bool) -> Swift.Bool
-}
-public class SFaceCompare {
-  public static let opncvwrp: SameFace.OpenCVWrapper
-  public init(on firstImage: UIKit.UIImage, and secondImage: UIKit.UIImage)
-  public func compareFaces(succes: @escaping ([SameFace.DetectionResult]) -> (), failure: @escaping (Swift.Error) -> ())
-  @objc deinit
+extension CIImage {
+  public var uiImage: UIKit.UIImage? {
+    get
+  }
 }
 public enum SFaceError : Swift.Error {
   case emptyResultsIn(Swift.String, reason: Swift.String?)

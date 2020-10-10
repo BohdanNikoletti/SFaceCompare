@@ -11,7 +11,7 @@ import SameFace
 public final class SFaceCompare {
   
   // MARK: - Properties
-  private static let opncvwrp: OpenCVWrapper = OpenCVWrapper()
+  private static let openCVwrapper: OpenCVWrapper = OpenCVWrapper()
   private let firstImage: UIImage
   private let secondImage: UIImage
   private let operationQueue: OperationQueue
@@ -39,34 +39,33 @@ public final class SFaceCompare {
    2. Is asynchronous inside.
    3. You should call this method ASAP
    */
-  public static func prepareData(){  opncvwrp.loadData() }
+  public static func prepareData() { openCVwrapper.loadData() }
   
   /**
    Compares faces detected on input images.
-
-   - parameter succes: Handler will call if Faces are the same.
+   
+   - parameter success: Handler will call if Faces are the same.
    - parameter failure: Handler will call if some error occurred.
    
    */
-  public func compareFaces(succes: @escaping ([DetectionResult])->(),
-                           failure: @escaping (Error) -> ()) {
+  public func compareFaces(completion: @escaping (Result<CompareData, Error>) -> Void ) {
     
     guard let firstFaceDetectionOperation = FaceDetectionOperation(input: firstImage, objectsCountToDetect: 1,
                                                                    orientation: CGImagePropertyOrientation.up) else {
-                                                                    DispatchQueue.main.async {
-                                                                      let error = SFaceError.canNotCreate("firstFaceDetectionOperation", reason: nil)
-                                                                      failure(error)
-                                                                    }
-                                                                    return
+      DispatchQueue.main.async {
+        let error = SFaceError.canNotCreate("firstFaceDetectionOperation", reason: nil)
+        completion(.failure(error))
+      }
+      return
     }
     
     guard let secondFaceDetectionOperation = FaceDetectionOperation(input: secondImage, objectsCountToDetect: 1,
                                                                     orientation: CGImagePropertyOrientation.up) else {
-                                                                      DispatchQueue.main.async {
-                                                                        let error = SFaceError.canNotCreate("secondFaceDetectionOperation", reason: nil)
-                                                                        failure(error)
-                                                                      }
-                                                                      return
+      DispatchQueue.main.async {
+        let error = SFaceError.canNotCreate("secondFaceDetectionOperation", reason: nil)
+        completion(.failure(error))
+      }
+      return
     }
     
     // Creating final operation
@@ -76,7 +75,7 @@ public final class SFaceCompare {
         DispatchQueue.main.async {
           let error = SFaceError.emptyResultsIn("First Face detection Operation",
                                                 reason: nil)
-          failure(error)
+          completion(.failure(error))
         }
         return
       }
@@ -86,7 +85,7 @@ public final class SFaceCompare {
         DispatchQueue.main.async {
           let error = SFaceError.emptyResultsIn("Second Face detection Operation",
                                                 reason: nil)
-          failure(error)
+          completion(.failure(error))
         }
         return
       }
@@ -97,50 +96,47 @@ public final class SFaceCompare {
        2. Pass them through ML model
        3. Return results
        */
-      guard let firstAlignedFace = SFaceCompare.opncvwrp.faceAlign(firstFaceOperationResults.image),
-        let secondAlignedFace = SFaceCompare.opncvwrp.faceAlign(secondFaceOperationResults.image) else {
-          DispatchQueue.main.async {
-            let error = SFaceError.wrongFaces(reason: "Faces can not be aligned. Try other images")
-            failure(error)
-          }
-          return
+      guard let firstAlignedFace = SFaceCompare.openCVwrapper.faceAlign(firstFaceOperationResults.image),
+            let secondAlignedFace = SFaceCompare.openCVwrapper.faceAlign(secondFaceOperationResults.image) else {
+        DispatchQueue.main.async {
+          let error = SFaceError.wrongFaces(reason: "Faces can not be aligned. Try other images")
+          completion(.failure(error))
+        }
+        return
       }
       do {
-        let net = Faces()
+        let net = try Faces(configuration: .init())
         guard let firstPixelBuffer = firstAlignedFace.cvPixelBuffer,
-          let secondPixelBuffer = secondAlignedFace.cvPixelBuffer else {
-            DispatchQueue.main.async {
-              let error = SFaceError
-                .wrongFaces(reason: "Can not extract cvPixelBuffer to one of image. Try other images.")
-              failure(error)
-            }
-            return
+              let secondPixelBuffer = secondAlignedFace.cvPixelBuffer else {
+          DispatchQueue.main.async {
+            let error = SFaceError
+              .wrongFaces(reason: "Can not extract cvPixelBuffer to one of image. Try other images.")
+            completion(.failure(error))
+          }
+          return
         }
         
         // neural networks answers getting
         let firstOutput = try net.prediction(data: firstPixelBuffer).output
         let secondOutput = try net.prediction(data: secondPixelBuffer).output
-        var result = 0.0
-        
         // network outputs differece calculating
-        for idx in 0..<128 {
-          result += (Double(truncating: firstOutput[idx]) - Double(truncating: secondOutput[idx]))
-            * (Double(truncating: firstOutput[idx]) - Double(truncating: secondOutput[idx]))
-        }
+        let result = (0..<128).reduce(0, { $0 + self.calculateDifference(firstOutput, secondOutput, at: $1) })
+        
         if result < 1.0 {
           DispatchQueue.main.async {
-            succes([firstFaceOperationResults, secondFaceOperationResults], result)
+            completion(.success(.init(detectionResults: [firstFaceOperationResults, secondFaceOperationResults],
+                                      probability: result)))
           }
         } else {
           DispatchQueue.main.async {
             let error = SFaceError.wrongFaces(reason: "Faces are not the same. Matching coof is \(result)")
-            failure(error)
+            completion(.failure(error))
           }
         }
       } catch {
         Logger.e(error.localizedDescription)
         DispatchQueue.main.async {
-          failure(error)
+          completion(.failure(error))
         }
       }
     }
@@ -152,5 +148,13 @@ public final class SFaceCompare {
     operationQueue.addOperations([firstFaceDetectionOperation,
                                   secondFaceDetectionOperation,
                                   finishOperation], waitUntilFinished: false)
+  }
+  
+  // MARK: - Private methods
+  private func calculateDifference( _ first: MLMultiArray,
+                                    _ second: MLMultiArray,
+                                    at index: Int) -> Double {
+    (Double(truncating: first[index]) - Double(truncating: second[index]))
+      * (Double(truncating: first[index]) - Double(truncating: second[index]))
   }
 }

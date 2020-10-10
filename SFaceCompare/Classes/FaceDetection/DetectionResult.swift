@@ -7,7 +7,7 @@
 //
 
 /**
- This struct stends for storing detection operations results.
+ This struct stands for storing detection operations results.
  */
 public struct DetectionResult {
   
