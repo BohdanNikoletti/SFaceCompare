@@ -7,10 +7,11 @@
 //
 
 extension CIImage {
-  
   var uiImage: UIImage? {
-    let context = CIContext.init(options: nil)
-    guard let cgImage = context.createCGImage(self, from: self.extent) else { return nil }
-    return UIImage(cgImage: cgImage)
+    CIContext(options: nil)
+      .createCGImage(self, from: self.extent)
+      .map {
+        UIImage(cgImage: $0)
+      }
   }
 }

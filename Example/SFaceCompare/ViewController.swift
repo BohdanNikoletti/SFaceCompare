@@ -19,19 +19,20 @@ final class ViewController: UIViewController {
   // MARK: - Properties
   private var images = [UIImage]() {
     didSet {
-      if images.count == 2 {
-        activityIndicator.startAnimating()
-        let faceComparator = SFaceCompare.init(on: self.images[0], and: self.images[1])
-        faceComparator.compareFaces(succes: { [weak self] results, matchingCoeff in
+      guard images.count == 2 else { return }
+      activityIndicator.startAnimating()
+      let faceComparator = SFaceCompare.init(on: self.images[0], and: self.images[1])
+      faceComparator.compareFaces { [weak self] result in
+        switch result {
+        case .failure(let error):
+          self?.activityIndicator.stopAnimating()
+          self?.infoLabel.text = (error as? SFaceError)?.localizedDescription
+          self?.view.backgroundColor = UIColor.red
+        case .success(let data):
           self?.activityIndicator.stopAnimating()
           self?.view.backgroundColor = UIColor.green
-          self?.infoLabel.text = "Yay! Faces are the same!"
-            print("Matching Coefficient: " + matchingCoeff.description)
-          }, failure: { [weak self] error in
-            self?.activityIndicator.stopAnimating()
-            self?.infoLabel.text = (error as? SFaceError)?.localizedDescription
-            self?.view.backgroundColor = UIColor.red
-        })
+          self?.infoLabel.text = "Yay! Faces are the same!\n With Coefficient: \(data.probability)"
+        }
       }
     }
   }
@@ -44,14 +45,9 @@ final class ViewController: UIViewController {
     addClickListenersToImageViews()
   }
   
-  override func didReceiveMemoryWarning() {
-    super.didReceiveMemoryWarning()
-  }
-  
   override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
-    if motion == .motionShake  {
-      setDegaultViewsStates()
-    }
+    guard motion == .motionShake else { return }
+    setDegaultViewsStates()
   }
   
   
@@ -68,9 +64,9 @@ final class ViewController: UIViewController {
     firstImageView.image = #imageLiteral(resourceName: "empty-image")
     secondImageView.image = #imageLiteral(resourceName: "empty-image")
     firstImageView.isUserInteractionEnabled = true
-    UIView.animate(withDuration: 0.35, animations: { [weak self] in
-      self?.view.backgroundColor = UIColor.white
-      self?.secondImageView.alpha = 0.1
+    UIView.animate(withDuration: 0.35, animations: {
+      self.view.backgroundColor = UIColor.white
+      self.secondImageView.alpha = 0.1
     })
   }
   
@@ -85,7 +81,7 @@ final class ViewController: UIViewController {
 
 // MARK: - UIImagePickerControllerDelegate
 extension ViewController: UIImagePickerControllerDelegate {
-
+  
   func imagePickerController(_ picker: UIImagePickerController,
                              didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
     guard let selectedPhoto = info[.originalImage] as? UIImage else {
@@ -117,20 +113,20 @@ extension ViewController: UIImagePickerControllerDelegate {
     if UIImagePickerController.isSourceTypeAvailable(.camera) {
       let cameraButton = UIAlertAction(title: "Take Photo",
                                        style: .default) { [unowned self] (alert) -> Void in
-                                        let imagePicker = UIImagePickerController()
-                                        imagePicker.delegate = self
-                                        imagePicker.sourceType = .camera
-                                        self.present(imagePicker, animated: true)
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.sourceType = .camera
+        self.present(imagePicker, animated: true)
       }
       imagePickerActionSheet.addAction(cameraButton)
     }
     
     let libraryButton = UIAlertAction(title: "Choose Existing",
                                       style: .default) { [unowned self] (alert) -> Void in
-                                        let imagePicker = UIImagePickerController()
-                                        imagePicker.delegate = self
-                                        imagePicker.sourceType = .photoLibrary
-                                        self.present(imagePicker, animated: true)
+      let imagePicker = UIImagePickerController()
+      imagePicker.delegate = self
+      imagePicker.sourceType = .photoLibrary
+      self.present(imagePicker, animated: true)
     }
     imagePickerActionSheet.addAction(libraryButton)
     let cancelButton = UIAlertAction(title: "Cancel", style: .cancel)
@@ -141,6 +137,4 @@ extension ViewController: UIImagePickerControllerDelegate {
 }
 
 // MARK: - UINavigationControllerDelegate
-extension ViewController: UINavigationControllerDelegate {
-  
-}
+extension ViewController: UINavigationControllerDelegate { }
