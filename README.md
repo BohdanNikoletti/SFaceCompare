@@ -1,8 +1,8 @@
 <img src="https://cdn.rawgit.com/BohdanNikoletti/SFaceCompare/7acc1b9f/GraphicMaterials/logo.png" width="64" height="64"> SFaceCompare: compare faces on your iOS device
 ======================================
 [![CI Status](https://img.shields.io/travis/BohdanNikoletti/SFaceCompare.svg?style=flat)](https://travis-ci.org/BohdanNikoletti/SFaceCompare)
-![iOS 11.3+](https://img.shields.io/badge/iOS-11.3%2B-blue.svg)
-![Swift 4.0+](https://img.shields.io/badge/Swift-4.0%2B-orange.svg)
+![iOS 12.0](https://img.shields.io/badge/iOS-11.3%2B-blue.svg)
+![Swift 5.0+](https://img.shields.io/badge/Swift-4.0%2B-orange.svg)
 [![Version](https://img.shields.io/cocoapods/v/SFaceCompare.svg?style=flat)](https://cocoapods.org/pods/SFaceCompare)
 [![License](https://img.shields.io/cocoapods/l/SFaceCompare.svg?style=flat)](https://cocoapods.org/pods/SFaceCompare)
 [![Platform](https://img.shields.io/cocoapods/p/SFaceCompare.svg?style=flat)](https://cocoapods.org/pods/SFaceCompare)
@@ -47,7 +47,7 @@ To install library, simply add the following line to your Podfile:
 
 ```ruby
 source 'https://github.com/CocoaPods/Specs.git'
-platform :ios, '11.3'
+platform :ios, '12.0'
 use_frameworks!
 
 target '<Your Target Name>' do
@@ -78,7 +78,7 @@ As simple as possible
 // 1: Create compare object
 let faceComparator = SFaceCompare(on: image1, and: image2)
 // 2: Call compareFaces method with success and error handlers
-faceComparator.compareFaces(success: { results in }, failure: {  error in })
+faceComparator.compareFaces{ results in ... }
 ```
 ## Credits
 
