@@ -8,14 +8,14 @@
 import Vision
 import SameFace
 
-public final class SFaceCompare {
+public struct SFaceCompare {
   
   // MARK: - Properties
   private static let openCVwrapper: OpenCVWrapper = OpenCVWrapper()
   private let firstImage: UIImage
   private let secondImage: UIImage
   private let operationQueue: OperationQueue
-  
+  private let matchingCoefficient: Double
   // MARK: - Initializer
   /**
    Instantiates face compare process for given images.
@@ -24,9 +24,12 @@ public final class SFaceCompare {
    - parameter and: a UIImage where face to compare should be found.
    
    */
-  public init(on firstImage: UIImage, and secondImage: UIImage ){
+  public init(on firstImage: UIImage,
+              and secondImage: UIImage,
+              matchingCoefficient: Double = 1.0){
     self.firstImage = firstImage
     self.secondImage = secondImage
+    self.matchingCoefficient = matchingCoefficient
     self.operationQueue = OperationQueue()
     self.operationQueue.qualityOfService = .background
   }
@@ -120,9 +123,11 @@ public final class SFaceCompare {
         let firstOutput = try net.prediction(data: firstPixelBuffer).output
         let secondOutput = try net.prediction(data: secondPixelBuffer).output
         // network outputs differece calculating
-        let result = (0..<128).reduce(0, { $0 + self.calculateDifference(firstOutput, secondOutput, at: $1) })
+        let result = (0..<128)
+          .reduce(0, { $0 + self.calculateDifference(firstOutput, secondOutput, at: $1) })
+          .squareRoot()
         
-        if result < 1.0 {
+        if result < matchingCoefficient {
           DispatchQueue.main.async {
             completion(.success(.init(detectionResults: [firstFaceOperationResults, secondFaceOperationResults],
                                       probability: result)))
